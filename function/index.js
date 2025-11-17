@@ -1,6 +1,18 @@
 async function handleRequest(request) {
     const url = new URL(request.url)
 
+    if (url.pathname === "/dns-query") {
+        const target = "https://dns.google/dns-query" + url.search
+
+        const headers = new Headers(request.headers)
+
+        return fetch(target, {
+            method: request.method,
+            headers: headers,
+            body: request.body,
+        })
+    }
+
     if (url.pathname === "/info") {
         const info = {}
 
