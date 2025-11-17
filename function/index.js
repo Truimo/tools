@@ -1,8 +1,3 @@
-const html = `<!DOCTYPE html>
-<body>
-  <h1>Hello World</h1>
-</body>`
-
 async function handleRequest(request) {
     const url = new URL(request.url)
 
@@ -27,11 +22,7 @@ async function handleRequest(request) {
         })
     }
 
-    return new Response(html, {
-        headers: {
-            "content-type": "text/html;charset=UTF-8",
-        },
-    })
+    return fetch(request.url)
 }
 
 export default {
