@@ -1,8 +1,8 @@
 {
     "name": "tools",
     "entry": "",
-    "installCommand": "npm install",
-    "buildCommand": "npm run build",
+    "installCommand": "pnpm install",
+    "buildCommand": "pnpm run build",
     "assets": {
         "directory": "./dist",
         "notFoundStrategy": "404Page"
