@@ -15,9 +15,9 @@ async function handleRequest(request) {
         info.headers = Object.fromEntries(request.headers.entries())
 
         try {
-            output.body = await request.text()
+            info.body = await request.text()
         } catch (err) {
-            output.body = `Unable to read body: ${err}`
+            info.body = `Unable to read body: ${err}`
         }
 
         return new Response(JSON.stringify(info, null, 2), {
@@ -27,7 +27,9 @@ async function handleRequest(request) {
         })
     }
 
-    return fetch('/404.html')
+    return new Response('404', {
+        status: 404,
+    })
 }
 
 export default {
