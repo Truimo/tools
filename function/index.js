@@ -2,17 +2,22 @@ async function handleRequest(request) {
     const url = new URL(request.url)
 
     if (url.pathname === "/info") {
-        const headersObj = {}
-        for (const [key, value] of request.headers.entries()) {
-            headersObj[key] = value
+        const info = {}
+
+        for (const key of Object.getOwnPropertyNames(request)) {
+            try {
+                output[key] = request[key]
+            } catch (_) { }
         }
 
-        const info = {
-            method: request.method,
-            url: request.url,
-            pathname: url.pathname,
-            searchParams: Object.fromEntries(url.searchParams.entries()),
-            headers: headersObj,
+        info.method = request.method
+        info.url = request.url
+        info.headers = Object.fromEntries(request.headers.entries())
+
+        try {
+            output.body = await request.text()
+        } catch (err) {
+            output.body = `Unable to read body: ${err}`
         }
 
         return new Response(JSON.stringify(info, null, 2), {
@@ -22,7 +27,7 @@ async function handleRequest(request) {
         })
     }
 
-    return fetch(request.url)
+    return fetch('/404.html')
 }
 
 export default {
