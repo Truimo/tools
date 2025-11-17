@@ -1,6 +1,6 @@
 {
     "name": "tools",
-    "entry": "",
+    "entry": "./function/index.js",
     "installCommand": "pnpm install",
     "buildCommand": "pnpm run build",
     "assets": {
