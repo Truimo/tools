@@ -12,10 +12,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         index: resolve(__dirname, 'index.html'),
-        textTransform: resolve(__dirname, 'text-transform.html'),
-        notFound: resolve(__dirname, '404.html')
+        textTransform: resolve(__dirname, 'text-transform.html')
       }
     }
   }
 })
-
