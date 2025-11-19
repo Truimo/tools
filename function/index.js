@@ -39,7 +39,7 @@ async function handleRequest(request) {
         })
     }
 
-    return new Response('404', {
+    return new Response('404 not found', {
         status: 404,
     })
 }
